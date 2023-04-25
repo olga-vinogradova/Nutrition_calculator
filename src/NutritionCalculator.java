@@ -1,21 +1,12 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Scanner;
 
 public class NutritionCalculator {
     public static void main(String[] args) {
         char action = 'y';
-
-        //User inputs population group
-        System.out.println("Please choose your population group (1,2,3)");
-        System.out.println("1-teenager (<18)");
-        System.out.println("2-adult (male)");
-        System.out.println("3-adult (female)");
-        Scanner scanner = new Scanner(System.in);
-        int ageGroup = scanner.nextInt();
-
-        //User inputs weight
-        System.out.println("Please enter your weight kg");
-        int weight = scanner.nextInt();
-
 
         //create cal(x), fat(y),carbs,salt in beginning 0
         float kcal = 0.0f;
@@ -24,10 +15,38 @@ public class NutritionCalculator {
         float fat = 0.0f;
         float salt = 0.0f;
 
+        String dbURL = "jdbc:mysql://localhost:3306/java35";
+        String username = "root";
+        String password = "Transcom01!";
+
+        //User inputs population group
+        System.out.println("Please choose your population group (1,2,3)");
+        System.out.println("1 - teenager (<18)");
+        System.out.println("2 - adult (male)");
+        System.out.println("3 - adult (female)");
+        Scanner scanner = new Scanner(System.in);
+        int ageGroup = scanner.nextInt();
+
+        //User inputs weight
+        System.out.println("Please enter your weight kg");
+        int weight = scanner.nextInt();
+
+
+        //Program prints out all items (food) to choose (from SQL)
+        try (Connection conn = DriverManager.getConnection(dbURL,username,password)){
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM food");
+            while (rs.next()){
+                System.out.print(rs.getString(1) + "\n");
+            }
+            conn.close();
+
+        } catch (Exception e){
+            System.out.println(e);
+        }
 
         //food LOOP
         do {
-            //Program prints out all items to choose (from SQL)
             //Interaction with SQL (food list print out)
             System.out.println("Please enter item name from list:");
             String foodItem = scanner.nextLine();
