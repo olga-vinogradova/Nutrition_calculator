@@ -5,7 +5,7 @@ public class Database {
 public static void printFoodList(){
     String dbURL = "jdbc:mysql://localhost:3306/java35";
     String username = "root";
-    String password = "Transcom01!";
+    String password = "Ezers123)";
     try (Connection conn = DriverManager.getConnection(dbURL,username,password)){
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT * FROM food");
@@ -22,7 +22,7 @@ public static void printFoodList(){
     public static void printDrinksList(){
         String dbURL = "jdbc:mysql://localhost:3306/java35";
         String username = "root";
-        String password = "Transcom01!";
+        String password = "Ezers123)";
         try (Connection conn = DriverManager.getConnection(dbURL,username,password)){
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM drinks");
@@ -40,7 +40,7 @@ public static void printFoodList(){
     public static void calculateKcal(){
         String dbURL = "jdbc:mysql://localhost:3306/java35";
         String username = "root";
-        String password = "Transcom01!";
+        String password = "Ezers123)";
         try (Connection conn = DriverManager.getConnection(dbURL,username,password)){
             Scanner scanner = new Scanner(System.in);
             String foodItem = scanner.nextLine().toLowerCase();

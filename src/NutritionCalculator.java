@@ -37,7 +37,7 @@ public class NutritionCalculator {
         //food LOOP
         do {
             //Interaction with SQL (food list print out)
-            System.out.println("Please enter item name from list:");
+            System.out.println("Please enter FOOD item name from list:");
             //SELECT * FROM (SQL)
             Database.calculateKcal();
 
@@ -66,11 +66,13 @@ public class NutritionCalculator {
 
         System.out.println("Drinks list");
         Database.printDrinksList();
+
+        boolean action1;
         //drink LOOP
         do {
             //Program prints out all items to choose (from SQL)
             //Interaction with SQL (food list print out)
-            System.out.println("Please enter item name from list:");
+            System.out.println("Please enter DRINK item name from list:");
             scanner.nextLine();
             String drinkItem = scanner.nextLine().toLowerCase();
             //SELECT * FROM (SQL)
@@ -91,8 +93,9 @@ public class NutritionCalculator {
             //Program does calculations and asks for continue (y/n)
 
             System.out.println("Do you want to continue? (y/n)");
-            char answer = scanner.next().charAt(0);
-        } while (action);
+            char answer1 = scanner.next().charAt(0);
+            action1 = (answer1 == 'y');
+        } while (action1);
 
 
 
