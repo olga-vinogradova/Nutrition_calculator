@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class NutritionCalculator {
     public static void main(String[] args) {
-        char action = 'y';
+        boolean action;
 
         //create cal(x), fat(y),carbs,salt in beginning 0
         float kcal = 0.0f;
@@ -15,9 +15,6 @@ public class NutritionCalculator {
         float fat = 0.0f;
         float salt = 0.0f;
 
-        String dbURL = "jdbc:mysql://localhost:3306/java35";
-        String username = "root";
-        String password = "Transcom01!";
 
         //User inputs population group
         System.out.println("Please choose your population group (1,2,3)");
@@ -32,25 +29,17 @@ public class NutritionCalculator {
         int weight = scanner.nextInt();
 
 
+        System.out.println("Product list: ");
         //Program prints out all items (food) to choose (from SQL)
-        try (Connection conn = DriverManager.getConnection(dbURL,username,password)){
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM food");
-            while (rs.next()){
-                System.out.print(rs.getString(1) + "\n");
-            }
-            conn.close();
-
-        } catch (Exception e){
-            System.out.println(e);
-        }
+        Database database = new Database();
+        Database.printFoodList();
 
         //food LOOP
         do {
             //Interaction with SQL (food list print out)
             System.out.println("Please enter item name from list:");
-            String foodItem = scanner.nextLine();
             //SELECT * FROM (SQL)
+            Database.calculateKcal();
 
 
             //Program asks to enter grams of item (Scanner)
@@ -67,18 +56,23 @@ public class NutritionCalculator {
 
             //Program does calculations and asks for continue (y/n)
             System.out.println("Do you want to continue? (y/n)");
-            action = scanner.nextLine().charAt(0);
-
-        }while (action == 'n');
-
+            char answer = scanner.next().charAt(0);
+            action = (answer == 'y');
 
 
+        }while (action);
+
+
+
+        System.out.println("Drinks list");
+        Database.printDrinksList();
         //drink LOOP
         do {
             //Program prints out all items to choose (from SQL)
             //Interaction with SQL (food list print out)
             System.out.println("Please enter item name from list:");
-            String drinkItem = scanner.nextLine();
+            scanner.nextLine();
+            String drinkItem = scanner.nextLine().toLowerCase();
             //SELECT * FROM (SQL)
 
 
@@ -95,10 +89,11 @@ public class NutritionCalculator {
             //Add calculated values to variables before LOOP
 
             //Program does calculations and asks for continue (y/n)
-            System.out.println("Do you want to continue? (y/n)");
-            action = scanner.nextLine().charAt(0);
 
-        }while (action == 'n');
+            System.out.println("Do you want to continue? (y/n)");
+            char answer = scanner.next().charAt(0);
+        } while (action);
+
 
 
         //Program prints out result and compares (if else in switch)
