@@ -9,11 +9,11 @@ public class NutritionCalculator {
         boolean action;
 
         //create cal(x), fat(y),carbs,salt in beginning 0
-        float kcal = 0.0f;
-        float protein = 0.0f;
-        float carbs = 0.0f;
-        float fat = 0.0f;
-        float salt = 0.0f;
+        float totalkcal = 0.0f;
+        float totalprotein = 0.0f;
+        float totalcarbs = 0.0f;
+        float totalfat = 0.0f;
+        float totalsalt = 0.0f;
 
 
         //User inputs population group
@@ -39,8 +39,9 @@ public class NutritionCalculator {
             //Interaction with SQL (food list print out)
             System.out.println("Please enter FOOD item name from list:");
             //SELECT * FROM (SQL)
-            Database.calculateKcal();
-
+            Database.inputFromUser();
+            float kcalForItem = Database.calculateKcal();
+            float proteinForItem = Database.calculateProtein();
 
             //Program asks to enter grams of item (Scanner)
             System.out.println("Please enter grams of item you ate:");
@@ -50,7 +51,11 @@ public class NutritionCalculator {
             float index = mass/10.0f;
 
             //Calculate calories, protein ect interacting with SQL
+            float totalKcalForItem = kcalForItem * index;
+            System.out.println("Kcal for Item: "+ totalKcalForItem);
 
+            float totalProteinForItem = proteinForItem * index;
+            System.out.println("Protein for Item: " + totalProteinForItem);
 
             //Add calculated values to variables before LOOP
 
@@ -59,10 +64,14 @@ public class NutritionCalculator {
             char answer = scanner.next().charAt(0);
             action = (answer == 'y');
 
+            totalkcal += totalKcalForItem;
+            totalprotein += totalProteinForItem;
+
 
         }while (action);
 
-
+        System.out.println("Total kcal: " + totalkcal);
+        System.out.println("Total protein: " + totalprotein);
 
         System.out.println("Drinks list");
         Database.printDrinksList();
