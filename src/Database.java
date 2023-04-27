@@ -2,11 +2,13 @@ import java.sql.*;
 import java.util.Scanner;
 
 public class Database {
-public static void printFoodList(){
-    String dbURL = "jdbc:mysql://localhost:3306/java35";
-    String username = "root";
-    String password = "Transcom01!";
-    try (Connection conn = DriverManager.getConnection(dbURL,username,password)){
+    private static String dbURL = "jdbc:mysql://localhost:3306/java35";
+    private static String username = "root";
+    private static String password = "Transcom01!";
+
+    public static void printFoodList(){
+    try {
+        Connection conn = DriverManager.getConnection(dbURL,username,password);
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT * FROM food");
         while (rs.next()){
@@ -17,12 +19,8 @@ public static void printFoodList(){
     } catch (Exception e){
         System.out.println(e);
     }
-
 }
     public static void printDrinksList(){
-        String dbURL = "jdbc:mysql://localhost:3306/java35";
-        String username = "root";
-        String password = "Transcom01!";
         try (Connection conn = DriverManager.getConnection(dbURL,username,password)){
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM drinks");
@@ -36,11 +34,7 @@ public static void printFoodList(){
         }
 
     }
-
     public static void calculateKcal(){
-        String dbURL = "jdbc:mysql://localhost:3306/java35";
-        String username = "root";
-        String password = "Transcom01!";
         try (Connection conn = DriverManager.getConnection(dbURL,username,password)){
             Scanner scanner = new Scanner(System.in);
             String foodItem = scanner.nextLine().toLowerCase();
