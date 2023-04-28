@@ -29,19 +29,22 @@ public class NutritionCalculator {
             int weight = scanner.nextInt();
 
 
-            System.out.println("Product list: ");
+            System.out.println("Product list: " + "\n");
             //Program prints out all items (food) to choose (from SQL)
             Database database = new Database();
             Database.printFoodList();
 
             //food LOOP
+        String foodItem;
             do {
                 //Interaction with SQL (food list print out)
                 System.out.println("Please enter FOOD item name from list:");
                 //SELECT * FROM (SQL)
-                Database.inputFromUser();
-                float kcalForItem = Database.calculateKcal();
-                float proteinForItem = Database.calculateProtein();
+                scanner.nextLine();
+                foodItem = scanner.nextLine().toLowerCase();
+                float kcalForItem = Database.calculateNutrition("kcal", foodItem);
+                float proteinForItem = Database.calculateNutrition("protein", foodItem);
+
 
                 //Program asks to enter grams of item (Scanner)
                 System.out.println("Please enter grams of item you ate:");
@@ -73,10 +76,12 @@ public class NutritionCalculator {
             System.out.println("Total kcal: " + totalkcal);
             System.out.println("Total protein: " + totalprotein);
 
-            System.out.println("Drinks list");
+            System.out.println("Drinks list:" + "\n");
             Database.printDrinksList();
 
             boolean action1;
+
+
             //drink LOOP
             do {
                 //Program prints out all items to choose (from SQL)
@@ -114,4 +119,3 @@ public class NutritionCalculator {
 
         }
     }
-}
