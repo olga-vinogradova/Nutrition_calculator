@@ -44,6 +44,9 @@ public class NutritionCalculator {
                 foodItem = scanner.nextLine().toLowerCase();
                 float kcalForItem = Database.calculateNutrition("kcal", foodItem);
                 float proteinForItem = Database.calculateNutrition("protein", foodItem);
+                float carbsForItem = Database.calculateNutrition("carbs", foodItem);
+                float fatsForItem = Database.calculateNutrition("fat", foodItem);
+                float saltForItem = Database.calculateNutrition("salt", foodItem);
 
 
                 //Program asks to enter grams of item (Scanner)
@@ -60,6 +63,15 @@ public class NutritionCalculator {
                 float totalProteinForItem = proteinForItem * index;
                 System.out.println("Protein for Item: " + totalProteinForItem);
 
+                float totalCarbsForItem = carbsForItem * index;
+                System.out.println("Carbs for Item: " + totalCarbsForItem);
+
+                float totalFatsForItem = fatsForItem * index;
+                System.out.println("Fats for Item: " + totalFatsForItem);
+
+                float totalSaltForItem = saltForItem * index;
+                System.out.println("Salt for Item: " + totalSaltForItem);
+
                 //Add calculated values to variables before LOOP
 
                 //Program does calculations and asks for continue (y/n)
@@ -69,12 +81,18 @@ public class NutritionCalculator {
 
                 totalkcal += totalKcalForItem;
                 totalprotein += totalProteinForItem;
+                totalcarbs += totalCarbsForItem;
+                totalfat += totalFatsForItem;
+                totalsalt += totalSaltForItem;
 
 
             } while (action);
 
             System.out.println("Total kcal: " + totalkcal);
             System.out.println("Total protein: " + totalprotein);
+            System.out.println("Total carbs: " + totalcarbs);
+            System.out.println("Total fat: " + totalfat);
+            System.out.println("Total salt: " + totalsalt);
 
             System.out.println("Drinks list:" + "\n");
             Database.printDrinksList();

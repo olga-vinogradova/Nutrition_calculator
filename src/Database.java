@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Database {
     private static String dbURL = "jdbc:mysql://localhost:3306/java35";
     private static String username = "root";
-    private static String password = "Transcom01!";
+    private static String password = "Ezers123)";
 
     public static void printFoodList() {
 
