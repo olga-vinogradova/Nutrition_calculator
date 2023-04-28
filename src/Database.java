@@ -52,7 +52,7 @@ public class Database {
 
 
             while (rs.next()) {
-                nutrientPer10Grams = rs.getInt(nutrient);
+                nutrientPer10Grams = rs.getFloat(nutrient);
 
 
             }
@@ -76,7 +76,7 @@ public class Database {
 
 
             while (rs.next()) {
-                nutrientPer10Milliliters = rs.getInt(nutrient);
+                nutrientPer10Milliliters = rs.getFloat(nutrient);
 
 
             }

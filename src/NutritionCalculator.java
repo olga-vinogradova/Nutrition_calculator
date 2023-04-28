@@ -29,8 +29,8 @@ public class NutritionCalculator {
         int weight = scanner.nextInt();
 
 
-        System.out.println("Product list: " + "\n");
         //Program prints out all items (food) to choose (from SQL)
+        System.out.println("Product list: " + "\n");
         Database database = new Database();
         Database.printFoodList();
 
@@ -72,7 +72,6 @@ public class NutritionCalculator {
             float totalSaltForItem = saltForItem * index;
             System.out.println("Salt for Item: " + totalSaltForItem);
 
-            //Add calculated values to variables before LOOP
 
             //Program does calculations and asks for continue (y/n)
             System.out.println("Do you want to continue? (y/n)");
@@ -90,7 +89,6 @@ public class NutritionCalculator {
 
 
         //drink LOOP
-        //
 
         System.out.println("Drinks list:" + "\n");
         Database.printDrinksList();
@@ -135,7 +133,6 @@ public class NutritionCalculator {
             float totalSaltForDrink = saltForDrink * index;
             System.out.println("Salt for Drink: " + totalSaltForDrink);
 
-            //Add calculated values to variables before LOOP
 
             //Program does calculations and asks for continue (y/n)
             System.out.println("Do you want to continue? (y/n)");
