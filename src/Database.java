@@ -41,7 +41,7 @@ public class Database {
     }
 
 
-    public static float calculateNutrition(String nutrient, String foodItem) {
+    public static float calculateNutritionFood(String nutrient, String foodItem) {
 
         float nutrientPer10Grams = 0;
         try (Connection conn = DriverManager.getConnection(dbURL, username, password)) {
@@ -53,7 +53,6 @@ public class Database {
 
             while (rs.next()) {
                 nutrientPer10Grams = rs.getInt(nutrient);
-                System.out.println(nutrientPer10Grams);
 
 
             }
@@ -65,4 +64,28 @@ public class Database {
         return nutrientPer10Grams;
 
     }
+
+    public static float calculateNutritionDrink(String nutrient, String drinkItem) {
+
+        float nutrientPer10Milliliters = 0;
+        try (Connection conn = DriverManager.getConnection(dbURL, username, password)) {
+            String sql = "SELECT " + nutrient + " FROM drinks WHERE drinkName = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, drinkItem.trim());
+            ResultSet rs = stmt.executeQuery();
+
+
+            while (rs.next()) {
+                nutrientPer10Milliliters = rs.getInt(nutrient);
+
+
+            }
+            conn.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return nutrientPer10Milliliters;
+    }
+
 }
