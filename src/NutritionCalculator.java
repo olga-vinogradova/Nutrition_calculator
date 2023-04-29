@@ -74,7 +74,7 @@ public class NutritionCalculator {
 
 
             //Program does calculations and asks for continue (y/n)
-            System.out.println("Do you want to continue? (y/n)");
+            System.out.println("Do you want to continue to choose food products? (y/n)");
             char answer = scanner.next().charAt(0);
             action = (answer == 'y');
 
@@ -135,7 +135,7 @@ public class NutritionCalculator {
 
 
             //Program does calculations and asks for continue (y/n)
-            System.out.println("Do you want to continue? (y/n)");
+            System.out.println("Do you want to continue to choose drink items? (y/n)");
             char answer = scanner.next().charAt(0);
             action1 = (answer == 'y');
 
@@ -181,11 +181,15 @@ public class NutritionCalculator {
                 // Validation for calories
 
                     if (totalkcal > maxNorm) {
-                        System.out.println("Your calorie intake is higher than daily norm!");
+                        System.out.println("1. Your calorie intake is higher than daily norm! \n" +
+                                "Focus on nutrient-dense foods (fruits, vegetables, whole grains, low-fat milk products, seafood, eggs, peas, nuts) and avoid sugary and high-fat foods! \n" +
+                                "Practice portion control and do regular exercises!\n" + "");
                     } else if (totalkcal <= minNorm) {
-                        System.out.println("Your calorie intake is less than daily norm!");
+                        System.out.println("1. Your calorie intake is less than daily norm! \n" +
+                                "Choose foods that ar high in nutrients and calories - nuts, seeds, avocados, whole grains and healthy fats. \n " +
+                                "Try also milk, smoothies and juices. \n" + "");
                     } else {
-                        System.out.println("Your calorie intake is in daily norm!");
+                        System.out.println("1. Your calorie intake is in daily norm! - You are doing well!\n" + "");
                     }
 
     }
@@ -193,11 +197,16 @@ public class NutritionCalculator {
         // Validation for calories
 
         if (totalProtein > index * weight) {
-            System.out.println("Your protein intake is higher than daily norm!");
+            System.out.println("2. Your protein intake is higher than daily norm! \n" +
+                    "Limit high-protein animal products like red meat, poultry. Choose leaner protein sources - fish, legumes, tofu. \n" +
+                    "Incorporate more plant-based proteins - beans, lentils and nuts! \n" +
+                    "Monitor your portion sizes and avoid overeating high-protein foods!\n" + "");
         } else if (totalProtein < index * weight ){
-            System.out.println("Your protein intake is less than daily norm!");
+            System.out.println("2. Your protein intake is less than daily norm! \n" +
+                    "Choose protein-rich foods like lean meats, poultry, fish, eggs, dairy products and legumes. \n" +
+                    "Aim to consume protein at every meal, to help distribute your intake evenly throughout the day!\n" + "");
         } else {
-            System.out.println("Your protein intake is in daily norm!");
+            System.out.println("2. Your protein intake is in daily norm! - You are doing well!\n" + "");
         }
 
     }
@@ -205,11 +214,17 @@ public class NutritionCalculator {
         // Validation for calories
 
         if (totalCarbs > norm) {
-            System.out.println("Your carbs intake is higher than daily norm!");
+            System.out.println("3. Your carbs intake is higher than daily norm! \n" +
+                    "Avoid processed foods like white bread, pasta and baked goods! \n" +
+                    "Choose whole grains like brown rice, quinoa, which are rich in fiber and other nutrients. \n" +
+                    "Incorporate more vegetables! \n" +
+                    "Avoid sugary drinks like soda, juice and sports drinks! \n" + "");
         } else if (totalCarbs < norm) {
-            System.out.println("Your carbs intake is less than daily norm!");
+            System.out.println("3. Your carbs intake is less than daily norm! \n" +
+                    "Incorporate health carbohydrate sources into your diet - fruits, vegetables, whole grains, legumes. \n" +
+                    "Choose brown rice, quinoa, beans, lentils and chickpeas.\n" + "");
         } else {
-            System.out.println("Your carbs intake is in daily norm!");
+            System.out.println("3. Your carbs intake is in daily norm! - You are doing well! \n" + "");
         }
 
     }
@@ -217,11 +232,20 @@ public class NutritionCalculator {
         // Validation for calories
 
         if (totalFats > norm) {
-            System.out.println("Your fats intake is higher than daily norm!");
+            System.out.println("4. Your fats intake is higher than daily norm! \n" +
+                    "Look for products, with lower fat content and avoid foods that ar high in saturated and trans fats! \n" +
+                    "Choose lean protein sources - chicken, turkey and fish, also plant-based protein - beans, lentils, and tofu. \n" +
+                    "Increase your intake of fruits and vegetables! \n" +
+                    "Use cooking methods that require less added fat, such as baking, broiling, grilling or roasting. \n" +
+                    "Limit high-fat snacks and desserts such as chips, fried foods, ice cream, cakes and pastries! \n" + "");
         } else if (totalFats < norm) {
-            System.out.println("Your fats intake is less than daily norm!");
+            System.out.println("4. Your fats intake is less than daily norm! \n" +
+                    "Choose healthy fat sources - avocados, nuts, seeds, fatty fish, olive oil and coconut oil. \n" +
+                    "Eat more fatty fish such as salmon, mackerel and sardines. \n" +
+                    "Incorporate full-fat dairy products - whole milk, cheese and yogurt. \n" +
+                    "Snack nuts and seeds like almonds, walnuts, chia seeds ands flaxseeds!\n" + "");
         } else {
-            System.out.println("Your fats intake is in daily norm!");
+            System.out.println("4. Your fats intake is in daily norm! - You are doing well!\n" + "");
         }
 
     }
@@ -229,11 +253,17 @@ public class NutritionCalculator {
         // Validation for calories
 
         if (totalSalt > 2.4) {
-            System.out.println("Your salt intake is higher than daily norm!");
+            System.out.println("5. Your salt intake is higher than daily norm! \n" +
+                    "Pay attention to the sodium content in the foods you eat and choose lower-sodium options whenever possible. \n" +
+                    "Limit processed and packaged foods because many of them are high in sodium. Choose fresh, whole foods instead. \n" +
+                    "Use herbs and spices instead of salt - try using garlic, onion, lemon juice, vinegar and pepper to flavor you food.");
         } else if (totalSalt < 2.4) {
-            System.out.println("Your salt intake is less than daily norm!");
+            System.out.println("5. Your salt intake is less than daily norm! \n" +
+                    "Add a small amount of salt to your meals, but be mindful not to overdo it! \n" +
+                    "Choose salty snacks - salted nuts, popcorn and pretzels, but be mindful of portion sizes and choose healthier snack when possible. \n" +
+                    "Drink fluids that contain salt - sport drinks and broth can help you to increase salt intake and also provide hydration.");
         } else {
-            System.out.println("Your salt intake is in daily norm!");
+            System.out.println("5. Your salt intake is in daily norm! - You are doing well!");
         }
 
     }
